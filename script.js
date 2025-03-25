@@ -7,8 +7,7 @@ const sections = [todo, inProgress, done];
 
 sections.forEach((section) => {
     section.addEventListener('drop', (ev) => dropHandler(ev));
-    section.addEventListener('dragover', (ev) => dragover_handler(ev))
-    section.addEventListener('dragstart', (ev) => dragStart(ev))
+    section.addEventListener('dragover', (ev) => dragoverHandler(ev))
 })
 
 document.querySelectorAll('.task').forEach(card => {
@@ -16,27 +15,23 @@ document.querySelectorAll('.task').forEach(card => {
     card.addEventListener('dragstart', (ev) => dragStart(ev));
 })
 
-function dropHandler(ev) {
-  
-
-    
-    console.log(ev)
-
-   
-}
-
-function dragover_handler(ev) {
-
-    // console.log(ev)
-    ev.dataTransfer.dropEffect = "copy";
-}
-
 
 function dragStart(ev) {
-
-
-
     ev.dataTransfer.setData('text/plain', ev.target.id);
+}
+function dragoverHandler(ev) {
+    ev.preventDefault(); // Necessário para permitir o drop
+    ev.dataTransfer.dropEffect = "move";
+}
 
-    // console.log(ev)
+function dropHandler(ev) {
+    ev.preventDefault();
+    // Obtém o ID do elemento arrastado
+    const cardId = ev.dataTransfer.getData('text/plain');
+    const card = document.getElementById(cardId);
+    if (card) {
+        // Move o card para a nova seção
+        ev.target.appendChild(card);
+        console.log(`Movido ${cardId} para ${ev.target.id}`);
+    }
 }
