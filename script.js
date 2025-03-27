@@ -35,3 +35,25 @@ function dropHandler(ev) {
         console.log(`Movido ${cardId} para ${ev.target.id}`);
     }
 }
+
+
+// criado de listas.
+
+const buttonAddList = document.querySelector('#create-list');
+const insertListWrapper = document.querySelector('#insert-list-info');
+const buttonCancel = document.querySelector("#button-cancel");
+
+console.log(buttonCancel)
+
+let isCreating = false
+
+
+buttonAddList.addEventListener('click', () => {
+    buttonAddList.classList.add('hidden'); 
+    insertListWrapper.style.display = 'block';
+})
+
+buttonCancel.addEventListener('click', () => {
+    buttonAddList.classList.remove('hidden');
+    insertListWrapper.style.display = 'none';
+})
