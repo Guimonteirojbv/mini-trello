@@ -42,8 +42,10 @@ function dropHandler(ev) {
 const buttonAddList = document.querySelector('#create-list');
 const insertListWrapper = document.querySelector('#insert-list-info');
 const buttonCancel = document.querySelector("#button-cancel");
+const buttonCreateList = document.querySelector('#add-list');
 
-console.log(buttonCancel)
+const boardsWrapper = document.querySelector('.boards-wrapper');
+
 
 let isCreating = false
 
@@ -57,3 +59,37 @@ buttonCancel.addEventListener('click', () => {
     buttonAddList.classList.remove('hidden');
     insertListWrapper.style.display = 'none';
 })
+
+buttonCreateList.addEventListener('click',() => {
+    const inputValue = document.querySelector('#name-list').value
+
+    boardsWrapper.appendChild(createListTask(inputValue));
+   
+})
+
+
+function createListTask(title) {
+    const list = document.createElement('div')
+    list.setAttribute('id', title)
+    list.classList.add('board');
+    list.classList.add('board-Card');
+
+    const headerBoard = document.createElement('div')
+    headerBoard.classList.add('boards-header');
+
+    const headerTitle = document.createElement('h2');
+    headerTitle.innerText = title;
+
+    const buttonCreate = document.createElement('button');
+    buttonCreate.classList.add('button-create');
+    buttonCreate.innerText = '+'
+
+    headerBoard.appendChild(headerTitle);
+    headerBoard.appendChild(buttonCreate);
+
+
+    list.appendChild(headerBoard);
+
+    return list
+
+}

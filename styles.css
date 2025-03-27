@@ -90,10 +90,11 @@
 
   padding: 24px 32px;
 }
+.add-list-wrapper {
+  max-width: 300px;
+}
 
-#todo,
-#inprogress,
-#done {
+.board-Card {
   background: #fff;
   padding: 16px;
 
