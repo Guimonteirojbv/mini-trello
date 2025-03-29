@@ -102,6 +102,7 @@
 
   box-shadow: 0px 2px 2px 0px #000;
 
+  max-width: 300px;
   min-width: 300px;
 }
 
