@@ -1,5 +1,21 @@
-import {dragStart} from './dragAndDrop.js'
-import {createListTask} from './createList.js'
+import {dragStart} from './dragAndDrop.js';
+import {createListTask} from './createList.js';
+import {addListToStorage} from './storage.js';
+
+
+//criando storage das listas para facilitar a criação e persistencia dos dados
+
+function createLists() {
+    const isExistsLists = localStorage.getItem('lists') 
+
+    if(!isExistsLists) {
+        localStorage.setItem('lists', JSON.stringify([]));
+    } else {
+        return
+    }
+}
+
+createLists();
 
 
 document.querySelectorAll('.task').forEach(card => {
@@ -33,10 +49,14 @@ buttonCancel.addEventListener('click', () => {
 buttonCreateList.addEventListener('click',() => {
     const inputValue = document.querySelector('#name-list').value
 
+    const isStorage = addListToStorage(inputValue);
+    if(!isStorage) return 
     boardsWrapper.appendChild(createListTask(inputValue));
 
     buttonAddList.classList.remove('hidden');
     insertListWrapper.style.display = 'none';
 })
 
+
+//preciso dar um jeito da aplicação parar se a lista já existe
 
