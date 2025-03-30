@@ -80,11 +80,15 @@
   height: calc(100vh - 120px);
   background: #eaf0ee;
 
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-auto-flow: column;
-  grid-template-rows: 1fr;
+  grid-template-rows: 1fr; */
   gap: 16px;
+
+  flex-wrap: nowrap;
+
+  align-content: start;
 
   overflow-x: scroll;
 
@@ -92,6 +96,8 @@
 }
 .add-list-wrapper {
   max-width: 300px;
+  min-width: 300px;
+  grid-column: -1;
 }
 
 .board-Card {

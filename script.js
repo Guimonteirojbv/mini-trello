@@ -3,6 +3,16 @@ import {createListTask} from './createList.js';
 import {addListToStorage} from './storage.js';
 
 
+const buttonAddList = document.querySelector('#create-list');
+const insertListWrapper = document.querySelector('#insert-list-info');
+const buttonCancel = document.querySelector("#button-cancel");
+const buttonCreateList = document.querySelector('#add-list');
+
+const boardsWrapper = document.querySelector('.boards-wrapper');
+
+
+
+
 //criando storage das listas para facilitar a criação e persistencia dos dados
 
 function createLists() {
@@ -11,7 +21,15 @@ function createLists() {
     if(!isExistsLists) {
         localStorage.setItem('lists', JSON.stringify([]));
     } else {
-        return
+        try {
+            const ArrayLists = JSON.parse(isExistsLists);
+
+            ArrayLists.map(list => {
+                return boardsWrapper.appendChild(createListTask(list.name))
+            })
+        } catch (error) {
+            console.error('Erro ao carregar listas', error);
+        }
     }
 }
 
@@ -25,15 +43,7 @@ document.querySelectorAll('.task').forEach(card => {
 
 // criado de listas.
 
-const buttonAddList = document.querySelector('#create-list');
-const insertListWrapper = document.querySelector('#insert-list-info');
-const buttonCancel = document.querySelector("#button-cancel");
-const buttonCreateList = document.querySelector('#add-list');
 
-const boardsWrapper = document.querySelector('.boards-wrapper');
-
-
-let isCreating = false
 
 
 buttonAddList.addEventListener('click', () => {
@@ -50,6 +60,7 @@ buttonCreateList.addEventListener('click',() => {
     const inputValue = document.querySelector('#name-list').value
 
     const isStorage = addListToStorage(inputValue);
+    console.log(!isStorage)
     if(!isStorage) return 
     boardsWrapper.appendChild(createListTask(inputValue));
 

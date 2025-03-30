@@ -31,7 +31,7 @@ function addListToStorage(name) {
     
     localStorage.setItem('lists',JSON.stringify(lists))
 
-
+    return true
 
 }
 
