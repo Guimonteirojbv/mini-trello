@@ -40,10 +40,6 @@
   display: none;
 }
 
-.hidden {
-  display: none;
-}
-
 .name-list-input {
   width: 100%;
   padding: 8px;
@@ -69,6 +65,39 @@
   cursor: pointer;
 }
 
+.input-text-card-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.input-text-card-wrapper input {
+  padding: 5px;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.input-text-card-wrapper div {
+  padding-top: 10px;
+}
+
+.input-text-card-wrapper div button {
+  padding: 5px;
+  margin-right: 5px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.input-text-card-wrapper button:first-child {
+  background: #579dff !important;
+  padding: 10px;
+  color: #fff;
+}
+
 .button-cancel {
   font-size: 1rem;
   font-weigth: bold;
@@ -81,14 +110,13 @@
   background: #eaf0ee;
 
   display: flex;
-  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-auto-flow: column;
-  grid-template-rows: 1fr; */
   gap: 16px;
 
   flex-wrap: nowrap;
 
   align-content: start;
+  align-items: flex-start;
+  justify-content: flex-start;
 
   overflow-x: scroll;
 
@@ -110,6 +138,24 @@
 
   max-width: 300px;
   min-width: 300px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.create-card {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.create-card:hover {
+  background: revert-layer;
+  border-radius: 8px;
 }
 
 .boards-header {
@@ -127,6 +173,18 @@
   border: none;
 
   cursor: pointer;
+}
+
+.card-container {
+  background: #eaf0ee;
+  padding: 5px 10px;
+  border-radius: 8px;
+  cursor: grab;
+}
+
+.card-container h1 {
+  font-size: 1.5rem;
+  font-weigth: 400;
 }
 
 .task {
@@ -154,4 +212,8 @@
   align-items: center;
 
   padding: 0px 20px;
+}
+
+.hidden {
+  display: none;
 }

@@ -60,7 +60,7 @@ buttonCreateList.addEventListener('click',() => {
     const inputValue = document.querySelector('#name-list').value
 
     const isStorage = addListToStorage(inputValue);
-    console.log(!isStorage)
+
     if(!isStorage) return 
     boardsWrapper.appendChild(createListTask(inputValue));
 
